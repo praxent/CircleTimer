@@ -53,6 +53,7 @@ IB_DESIGNABLE
 @property(nonatomic) IBInspectable CGFloat thickness;
 @property(nonatomic, strong) UIFont *font;
 @property (assign) IBInspectable BOOL isBackwards;
+@property (assign) IBInspectable BOOL displayMinutes;
 
 
 /**  @elapsedTime - The amount of time that the timer has completed.

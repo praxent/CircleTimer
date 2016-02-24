@@ -69,6 +69,7 @@
     self.offset = OFFSET;
     self.active = YES;
     self.isBackwards = NO;
+    self.displayMinutes = YES;
 
 }
 
@@ -114,7 +115,13 @@
     
     label.textAlignment = NSTextAlignmentCenter;
     label.adjustsFontSizeToFitWidth = YES;
-    [label setText:@"00:00"];
+
+    if (self.displayMinutes) {
+        [label setText:@"00:00"];
+    } else {
+        [label setText:@"0"];
+    }
+
     [self addSubview:label];
     
     [label setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -145,8 +152,11 @@
         seconds = (int) elapsedTime % 60;
     }
 
-    NSString *time = [NSString stringWithFormat:@"%02d:%02d", minutes, seconds];
-    [self.timerLabel setText:time];
+    if (self.displayMinutes) {
+        [self.timerLabel setText: [NSString stringWithFormat:@"%02d:%02d", minutes, seconds]];
+    } else {
+        [self.timerLabel setText: [NSString stringWithFormat:@"%d", seconds]];
+    }
 }
 
 
