@@ -70,6 +70,7 @@
     self.active = YES;
     self.isBackwards = NO;
     self.displayMinutes = YES;
+    self.displayCountdown = YES;
 
 }
 
@@ -122,6 +123,10 @@
         [label setText:@"0"];
     }
 
+    if (!self.displayCountdown) {
+        [label setText:@""];
+    }
+
     [self addSubview:label];
     
     [label setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -143,7 +148,12 @@
 - (void)updateTimerLabel:(NSTimeInterval)elapsedTime {
     int minutes;
     int seconds;
-    
+
+    if (!self.displayCountdown) {
+        [self.timerLabel setText: @""];
+        return;
+    }
+
     if (self.isBackwards) {
         minutes = (int) ((self.totalTime - elapsedTime) / 60);
         seconds = (int) (self.totalTime - elapsedTime) % 60;

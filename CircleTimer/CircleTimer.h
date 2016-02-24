@@ -54,6 +54,7 @@ IB_DESIGNABLE
 @property(nonatomic, strong) UIFont *font;
 @property (assign) IBInspectable BOOL isBackwards;
 @property (assign) IBInspectable BOOL displayMinutes;
+@property (assign) IBInspectable BOOL displayCountdown;
 
 
 /**  @elapsedTime - The amount of time that the timer has completed.
