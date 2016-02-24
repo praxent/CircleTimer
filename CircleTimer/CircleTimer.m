@@ -155,6 +155,7 @@
     if (self.displayMinutes) {
         [self.timerLabel setText: [NSString stringWithFormat:@"%02d:%02d", minutes, seconds]];
     } else {
+        seconds = self.isRunning ? seconds + 1 : seconds;
         [self.timerLabel setText: [NSString stringWithFormat:@"%d", seconds]];
     }
 }
